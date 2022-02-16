@@ -29,7 +29,7 @@ setTimeout(function () {
 
   if (playing == true) {
     Intro();
-    Gameplay();
+    
 
   }
 
@@ -98,6 +98,12 @@ function Attack() {
   //final functionAttack
 }
 
+function resetVida (){
+monstro.vida = 150;
+heroi.vida = 100;
+
+
+}
 
 function MonsterAttack() {
   console.log(`O Monstro avança mostrando-lhe os dentes e te pega em cheio.`);
@@ -178,13 +184,13 @@ function Replay() {
   if (tryagain == 1) {
     console.clear();
 
-    heroi.vida = 100;
-    monstro.vida = 150;
+    resetVida();
     Intro();
     Gameplay();
 
   } else if (tryagain == 2) {
     console.log(`Obrigada por jogar! Palerma!`);
+    const playing = false;
 
   }
 
