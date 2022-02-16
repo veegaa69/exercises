@@ -24,13 +24,19 @@ const intro = true;
 //  ATTACK: "ATTACK",
 //  DEFENSE: "DEFENSE",
 //};
+//////////////////////////////////////////
 
-if (playing == true) {
-  Intro();
-  Gameplay();
+setTimeout(function () {
 
-}
+  if (playing == true) {
+    Intro();
+    Gameplay();
 
+  }
+
+}, 500);
+
+//////////////////////////////////////////
 function Intro() {
 
   console.log("Você, Herói, típico MC de cabelo espetado, caminha em direção a cidade mais próxima.");
@@ -97,8 +103,8 @@ function Defense() {
 
   heroi.vida = heroi.vida - monstroAtaque;
   console.log(`Você perdeu ${monstroAtaque} de vida.`);
-  Status ();
-  Gameplay ();
+  Status();
+  Gameplay();
 
 
 
