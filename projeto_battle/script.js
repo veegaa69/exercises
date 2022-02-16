@@ -19,23 +19,15 @@ const monstro = {
 
 const playing = true;
 
-//const MonsterTurn = {
-//  ATTACK: "ATTACK",
-//  DEFENSE: "DEFENSE",
-//};
-//////////////////////////////////////////
-
 setTimeout(function () {
 
   if (playing == true) {
     Intro();
-    
 
   }
 
 }, 500);
 
-//////////////////////////////////////////
 function Intro() {
 
   console.log("Você, Herói, típico MC de cabelo espetado, caminha em direção a cidade mais próxima.");
@@ -182,14 +174,14 @@ function Replay() {
   const tryagain = prompt(`Jogar novamente?`)
 
   if (tryagain == 1) {
-    console.clear();
-
     resetVida();
     Intro();
     Gameplay();
+    console.clear();
 
   } else if (tryagain == 2) {
     console.log(`Obrigada por jogar! Palerma!`);
+    resetVida();
     const playing = false;
 
   }
