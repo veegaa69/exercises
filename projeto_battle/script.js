@@ -4,7 +4,7 @@ console.log("ue");
 const heroi = {
   vida: 100,
   ataque: 15,
-  defesa: 10,
+  defesa: 25,
   magia: 40,
   guarda: true,
 
@@ -18,7 +18,6 @@ const monstro = {
 };
 
 const playing = true;
-const intro = true;
 
 //const MonsterTurn = {
 //  ATTACK: "ATTACK",
@@ -66,6 +65,9 @@ function Gameplay() {
   } else if (action == 4) {
     Run();
   }
+  //else {
+  //  Gameplay();
+  //}
 
   //final funtionGamePlay
 }
@@ -85,8 +87,9 @@ function Attack() {
     console.log(`Você pensa em todos os bolinhos que ainda pode comer e pula erguendo a espada o mais alto que consegue. Acerta a cabeça do monstro com força e ele cai ao, chão, desfalecido e com Xzinhos nos olhos.`);
     console.log(`Parabéns, Herói! Você venceu!`);
     Replay();
-  } else if (monstro.vida > 1) {
 
+  } else if (monstro.vida > 1) {
+    MonsterAttack();
     Status();
     Gameplay();
 
@@ -94,6 +97,30 @@ function Attack() {
 
   //final functionAttack
 }
+
+
+function MonsterAttack() {
+  console.log(`O Monstro avança mostrando-lhe os dentes e te pega em cheio.`);
+  const danoMonstro = monstro.ataque - heroi.defesa
+  console.log(`Você perde ${danoMonstro} de vida`);
+  heroi.vida -= danoMonstro
+
+
+    if (heroi.vida < 1) {
+      console.log(`O monstro avança com mais afinco e engole sua cabeça com uma mordida só.`);
+      console.log(`Booo! Você perdeu!`);
+      Replay();
+    } else if (heroi.vida > 1) {
+
+      Status();
+      Gameplay();
+
+
+    }
+
+  //final functionMonsterAttack
+}
+
 
 function Defense() {
   console.log(`Você puxou o escudo e se defendeu!`);
@@ -106,9 +133,6 @@ function Defense() {
   Status();
   Gameplay();
 
-
-
-  Gameplay();
   //final functionDefense
 }
 
@@ -127,6 +151,7 @@ function Magic() {
 
     Status();
     Gameplay();
+    MonsterAttack();
 
   }
 
@@ -146,15 +171,19 @@ function Run() {
 
 function Replay() {
   console.log(`Jogar novamente?`);
-  console.log(`   5 - Sim`);
-  console.log(`   6 - Não`);
+  console.log(`   1 - Sim`);
+  console.log(`   2 - Não`);
   const tryagain = prompt(`Jogar novamente?`)
 
-  if (tryagain == 5) {
+  if (tryagain == 1) {
     console.clear();
+
+    heroi.vida = 100;
+    monstro.vida = 150;
     Intro();
     Gameplay();
-  } else if (tryagain == 6) {
+
+  } else if (tryagain == 2) {
     console.log(`Obrigada por jogar! Palerma!`);
 
   }
@@ -164,14 +193,13 @@ function Replay() {
 
 
 
-function MonsterAttack() {
-  console.log(`O Monstro avança mostrando-lhe os dentes e te pega em cheio.`);
 
-  //final functionMonsterAttack
-}
-
-function MonsterDefense() {
-  console.log(`O Monstro se comprime como um tatu-bolinha e se protege do seu ataque.`);
+//function MonsterDefense() {
+  //console.log(`O Monstro se comprime como um tatu-bolinha e se protege do seu ataque.`);
 
   //final functionMonsterDefense
-}
+//}
+
+//ataqie do monstro apois o ataque do danoHeroi
+//resetar vida do heroi apos o reset
+// ajustar loop do final
